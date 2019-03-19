@@ -3,8 +3,7 @@ FROM ruby:2.6
 LABEL maintainer="bas@fourstack.nl"
 
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
-  nodejs \
-  sqlite3
+  nodejs
 
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app

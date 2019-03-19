@@ -8,7 +8,18 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+    environment:
+      POSTGRES_HOST: database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: some-long-secure-password
+      POSTGRES_DB: myapp_development
 
   redis:
     image: redis
 
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: some-long-secure-password
+      POSTGRES_DB: myapp_development
