@@ -9,3 +9,6 @@ services:
     volumes:
       - .:/usr/src/app
 
+  redis:
+    image: redis
+
