@@ -7,7 +7,6 @@ RSpec.describe "PageViews" do
   end
   it "is enhanced with JavaScript on", js: true do
     visit '/welcome'
-    sleep 1
     expect(page).to have_text("ENHANCED!")
   end
 end
