@@ -6,7 +6,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-      - "4000:4000"
     volumes:
       - .:/usr/src/app
     env_file:
@@ -28,7 +27,7 @@ services:
     logging:
       driver: none
     ports:
-      - "5900:5900"
+      - "5901:5900"
 
 volumes:
   db_data:
