@@ -9,6 +9,8 @@ services:
     env_file:
       - .env/production/database
       - .env/production/web
+    deploy:
+      replicas: 2
 
   db-migrator:
     image: basvanwesting/myapp_web:prod
