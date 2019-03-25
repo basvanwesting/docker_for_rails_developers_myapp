@@ -9,6 +9,8 @@ services:
     env_file:
       - .env/production/database
       - .env/production/web
+    deploy:
+      replicas: 2
 
   db-migrator:
     image: basvanwesting/myapp_web:prod
@@ -20,13 +22,24 @@ services:
       restart_policy:
         condition: none
 
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
   redis:
     image: redis
 
   database:
     image: postgres
     env_file:
-      - .env/development/database
+      - .env/production/database
     volumes:
       - db_data:/var/lib/postgresql/data
 
