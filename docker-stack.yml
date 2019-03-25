@@ -10,6 +10,16 @@ services:
       - .env/production/database
       - .env/production/web
 
+  db-migrator:
+    image: basvanwesting/myapp_web:prod
+    command: ["./wait-for", "--timeout=300", "database:5432", "--", "bin/rails", "db:migrate"]
+    env_file:
+      - .env/production/database
+      - .env/production/web
+    deploy:
+      restart_policy:
+        condition: none
+
   redis:
     image: redis
 
